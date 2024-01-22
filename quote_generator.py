@@ -7,7 +7,8 @@ def get_random_quote():
         quote_data = response.json()
         content = quote_data.get("content")
         author = quote_data.get("author")
-        return f'"{content}" - {author}'
+        source = quote_data.get("tags", {}).get("source", "Unknown")
+        return f'"{content}" - {author} (Source: {source})'
     else:
         return "Failed to fetch a random quote."
 
